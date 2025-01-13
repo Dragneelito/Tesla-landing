@@ -1,0 +1,109 @@
+---
+import LandingHeader from "../components/LandingHeader.astro";
+import Section from "../components/Section.astro";
+import ChargeSection from "../components/ChargeSection.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <LandingHeader />
+  <main
+    class="snap-y snap-mandatory relative w-full h-screen overflow-auto scroll-m-0"
+  >
+    <div class="snap-center">
+      <Section
+        color="white"
+        title="Disfrute de Tesla"
+        subtitle="Programe una prueba de conduccion hoy mismo"
+      >
+        <div
+          slot="footer"
+          class="hover:scale-105 transition-scale duration-300"
+        >
+          <a
+            class="inline-block backdrop-blur-sm bg-white/5 text-sm border-[3px] border-white rounded font-medium px-12 py-2 text-white hover:bg-white hover:text-black transition-all duration-300"
+            href="#">Prueba de conduccion</a
+          >
+        </div>
+        <video
+          slot="background"
+          class="object-center object-cover h-full w-full"
+          autoplay
+          loop
+          src="/video.webm"></video>
+      </Section>
+    </div>
+    <div class="snap-center">
+      <Section
+        color="black"
+        title="Model S"
+        subtitle="Programe una consulta Virtual"
+      >
+        <div slot="footer" class="flex justify-center gap-x-4">
+          <a
+            class="inline-block bg-gray-500 text-sm border-[3px] border-gray-500 rounded font-medium px-12 py-2 text-white hover:bg-white hover:border-white hover:text-black hover:scale-105 transition-all duration-300"
+            href="#">Pedido Personalizado</a
+          >
+          <a
+            class="inline-block bg-white text-sm border-[3px] border-white rounded font-medium px-12 py-2 text-black hover:bg-black hover:text-white hover:border-black hover:scale-105 transition-all duration-300"
+            href="#">Saber Mas</a
+          >
+        </div>
+        <img
+          slot="background"
+          src="/model-s.avif"
+          alt="model-s"
+          class="h-full w-full object-cover object-center"
+        />
+      </Section>
+    </div>
+    <div class="snap-center">
+      <Section
+        color="black"
+        title="Model X"
+        subtitle="Programe una consulta Virtual"
+      >
+        <div slot="footer" class="flex justify-center gap-x-4">
+          <a
+            class="inline-block bg-gray-500 text-sm border-[3px] border-gray-500 rounded font-medium px-12 py-2 text-white hover:bg-white hover:border-white hover:text-black hover:scale-105 transition-all duration-300"
+            href="#">Pedido Personalizado</a
+          >
+          <a
+            class="inline-block bg-white text-sm border-[3px] border-white rounded font-medium px-12 py-2 text-black hover:bg-black hover:text-white hover:border-black hover:scale-105 transition-all duration-300"
+            href="#">Saber Mas</a
+          >
+        </div>
+        <img
+          slot="background"
+          src="/model-x.avif"
+          alt="model-x"
+          class="h-full w-full object-cover object-center"
+        />
+      </Section>
+    </div>
+    <div class="snap-center">
+      <Section
+        color="black"
+        title="Model Y"
+        subtitle="Programe una consulta Virtual"
+      >
+        <div slot="footer" class="flex justify-center gap-x-4">
+          <a
+            class="inline-block bg-gray-500 text-sm border-[3px] border-gray-500 rounded font-medium px-12 py-2 text-white hover:bg-white hover:border-white hover:text-black hover:scale-105 transition-all duration-300"
+            href="#">Pedido Personalizado</a
+          >
+          <a
+            class="inline-block bg-white text-sm border-[3px] border-white rounded font-medium px-12 py-2 text-black hover:bg-black hover:text-white hover:border-black hover:scale-105 transition-all duration-300"
+            href="#">Saber Mas</a
+          >
+        </div>
+        <img
+          slot="background"
+          src="/model-y.avif"
+          alt="model-y"
+          class="h-full w-full object-cover object-center"
+        />
+      </Section>
+    </div>
+  </main>
+</Layout>
