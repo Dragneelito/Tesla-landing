@@ -1,0 +1,92 @@
+---
+import LandingLogo from "./LandingLogo.astro";
+---
+
+<header
+  id="landing-header"
+  class="py-3 px-10 flex items-center fixed top-0 w-full justify-between text-white z-40"
+>
+  <div class="flex flex-grow basis-0">
+    <LandingLogo />
+  </div>
+  <nav>
+    <ul
+      class="flex text-sm [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:transition-all [&>li>a]:duration-300"
+    >
+      <li><a href="#">Model S</a></li>
+      <li><a href="#">Model 3</a></li>
+      <li><a href="#">Model X</a></li>
+      <li><a href="#">Model Y</a></li>
+      <li><a href="#">PowerWall</a></li>
+      <li><a href="#">Carga</a></li>
+    </ul>
+  </nav>
+  <nav class="flex flex-grow basis-0 justify-end">
+    <ul
+      class="flex text-sm [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:transition-all [&>li>a]:duration-300"
+    >
+      <li><a href="#">Soporte</a></li>
+      <li><a href="#">Tienda</a></li>
+      <li><a href="#">Cuenta</a></li>
+      <li><a href="#">Menu</a></li>
+    </ul>
+  </nav>
+  <div
+    id="backdrop-menu"
+    class="absolute bg-black/5 backdrop-blur-lg rounded translate-x-[var(--left)] translate-y-[var(--top)] w-[var(--width)] h-[var(--height)] transition-all duration-500 ease-in-out
+   opacity-0 -z-10 left-0 top-0"
+  >
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const $header = document.querySelector("#landing-header") as HTMLElement;
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.9,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { isIntersecting } = entry;
+        if (isIntersecting) {
+          const color = entry.target.getAttribute("data-header-color");
+          if (color && $header) {
+            $header.style.color = color;
+          }
+        }
+      });
+    }, observerOptions);
+
+    const $sections = document.querySelectorAll(".landing-section");
+    $sections.forEach((section) => observer.observe(section));
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const listItem = document.querySelectorAll("#landing-header li");
+    const backdropMenu = document.querySelector(
+      "#backdrop-menu"
+    ) as HTMLElement;
+
+    listItem.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        const { left, top, width, height } = item.getBoundingClientRect();
+
+        backdropMenu.style.setProperty("--left", `${left}px`);
+        backdropMenu.style.setProperty("--top", `${top}px`);
+        backdropMenu.style.setProperty("--width", `${width}px`);
+        backdropMenu.style.setProperty("--height", `${height}px`);
+        backdropMenu.style.opacity = "1";
+        backdropMenu.style.visibility = "visible";
+      });
+      item.addEventListener("mouseleave", () => {
+        backdropMenu.style.opacity = "0";
+        backdropMenu.style.visibility = "hidden";
+      });
+    });
+  });
+</script>
